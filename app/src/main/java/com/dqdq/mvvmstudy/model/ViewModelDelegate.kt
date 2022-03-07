@@ -9,7 +9,7 @@ class ViewModelDelegate<out T: BaseViewModel>(private val clazz: KClass<T>
 
     private var modelView:T? =null
 
-    private fun buildViewModel(activity:BaseActivity):T{
+    fun buildViewModel(activity:BaseActivity):T{
         if (modelView!=null)
             return modelView as T
         activity?.let {
@@ -20,4 +20,4 @@ class ViewModelDelegate<out T: BaseViewModel>(private val clazz: KClass<T>
     }
 }
 
-fun <T:BaseViewModel> BaseActivity.viewModelDelegate(clazz: KClass<T>) = ViewModelDelegate(clazz,true)
+fun <T:BaseViewModel> viewModelDelegate(clazz: KClass<T>) = ViewModelDelegate(clazz,true)

@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">MvvmStudy</string>
-    <string name="username">user name:</string>
+    <string name="username">username:</string>
     <string name="password">password:</string>
     <string name="login">login</string>
+    <string name="counting_btn_state_start">开始</string>
+    <string name="counting_btn_state_stop">停止</string>
+    <string name="sasd">sasd</string>
 </resources>
