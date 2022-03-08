@@ -1,7 +1,8 @@
 package com.dqdq.mvvmstudy.model
 
 import androidx.lifecycle.ViewModelProvider
-import com.dqdq.mvvmstudy.activity.BaseActivity
+import com.dqdq.mvvmstudy.base.BaseActivity
+import com.dqdq.mvvmstudy.base.BaseFragment
 import kotlin.reflect.KClass
 
 class ViewModelDelegate<out T: BaseViewModel>(private val clazz: KClass<T>
@@ -9,13 +10,18 @@ class ViewModelDelegate<out T: BaseViewModel>(private val clazz: KClass<T>
 
     private var modelView:T? =null
 
-    fun buildViewModel(activity:BaseActivity):T{
+    @JvmOverloads
+    fun buildViewModel(activity: BaseActivity? = null, fragment: BaseFragment? = null):T{
         if (modelView!=null)
             return modelView as T
         activity?.let {
-            modelView = ViewModelProvider(activity)[clazz.java]
+            modelView = ViewModelProvider(it)[clazz.java]
+        }?:fragment?.let {
+            modelView = if (!fromActivity)
+                ViewModelProvider(it,ViewModelProvider.NewInstanceFactory())[clazz.java]
+            else
+                ViewModelProvider(it.requireActivity())[clazz.java]
         }
-
         return modelView!!
     }
 }

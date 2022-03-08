@@ -15,7 +15,7 @@ class LoginModelView : BaseViewModel() {
 
     var liveUserName: MutableLiveData<String>? = null
     var livePassWord: MutableLiveData<String>? = null
-
+    var loginCallBack :((Boolean) -> Unit)? = null
 
     open fun currentUserName():MutableLiveData<String>{
         if (liveUserName == null)
