@@ -1,12 +1,13 @@
-package com.dqdq.mvvmstudy.model
+package com.dqdq.mvvmstudy.model.ext
 
 import androidx.lifecycle.ViewModelProvider
 import com.dqdq.mvvmstudy.base.BaseActivity
 import com.dqdq.mvvmstudy.base.BaseFragment
+import com.dqdq.mvvmstudy.base.BaseViewModel
 import kotlin.reflect.KClass
 
 class ViewModelDelegate<out T: BaseViewModel>(private val clazz: KClass<T>
-    ,private val fromActivity:Boolean = true) {
+                                              , private val fromActivity:Boolean = true) {
 
     private var modelView:T? =null
 
@@ -26,4 +27,4 @@ class ViewModelDelegate<out T: BaseViewModel>(private val clazz: KClass<T>
     }
 }
 
-fun <T:BaseViewModel> viewModelDelegate(clazz: KClass<T>) = ViewModelDelegate(clazz,true)
+fun <T: BaseViewModel> BaseActivity.viewModelDelegate(clazz: KClass<T>) = ViewModelDelegate(clazz,true)

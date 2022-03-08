@@ -1,44 +1,24 @@
 package com.dqdq.mvvmstudy.viewModel
 
-import android.annotation.SuppressLint
-import android.util.Log
+import android.app.Application
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.dqdq.mvvmstudy.model.BaseViewModel
-import com.dqdq.mvvmstudy.model.utils.RxJavaUtils
-import io.reactivex.Observable
-import io.reactivex.disposables.Disposable
-import java.lang.StringBuilder
-import java.util.concurrent.TimeUnit
+import com.dqdq.mvvmstudy.base.BaseViewModel
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
-class LoginModelView : BaseViewModel() {
+class LoginModelView(application: Application) : BaseViewModel(application) {
 
-    var liveUserName: MutableLiveData<String>? = null
-    var livePassWord: MutableLiveData<String>? = null
     var loginCallBack :((Boolean) -> Unit)? = null
 
-    open fun currentUserName():MutableLiveData<String>{
-        if (liveUserName == null)
-            liveUserName = MutableLiveData()
-        return liveUserName as MutableLiveData<String>
-    }
-
-    open fun currentPassword():MutableLiveData<String>{
-        if (livePassWord == null)
-            livePassWord = MutableLiveData()
-        return livePassWord as MutableLiveData<String>
-    }
-
-    open fun userLogin(){
-        if(liveUserName?.value?.isEmpty() == true
-            &&livePassWord?.value?.isEmpty() == true){
-        }else{
-
+    open fun userLogin(userName:String,pwd:String){
+        MainScope().launch {
+            delay(1000)
+            if(userName.isEmpty() || pwd.isEmpty()){
+                loginCallBack?.let { it(false) }
+            }else{
+                loginCallBack?.let { it(true) }
+            }
         }
     }
-
-    companion object{
-        val TAG = this.javaClass.simpleName
-    }
-
 }
