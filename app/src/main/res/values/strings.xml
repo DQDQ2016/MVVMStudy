@@ -6,4 +6,7 @@
     <string name="counting_btn_state_start">开始</string>
     <string name="counting_btn_state_stop">停止</string>
     <string name="sasd">sasd</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="net_list">网络</string>
+    <string name="database_list">数据库</string>
 </resources>

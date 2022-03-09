@@ -28,3 +28,5 @@ class ViewModelDelegate<out T: BaseViewModel>(private val clazz: KClass<T>
 }
 
 fun <T: BaseViewModel> BaseActivity.viewModelDelegate(clazz: KClass<T>) = ViewModelDelegate(clazz,true)
+
+fun <T: BaseViewModel> BaseFragment.viewModelDelegate(clazz: KClass<T>) = ViewModelDelegate(clazz,true)

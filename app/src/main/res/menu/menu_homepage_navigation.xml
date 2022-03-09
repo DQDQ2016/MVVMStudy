@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="@string/net_list"
+        android:icon="@drawable/ic_net"
+        android:id="@+id/navigation_net_list"/>
+    <item android:title="@string/database_list"
+        android:icon="@drawable/ic_database"
+        android:id="@+id/navigation_database_list"/>
+
+</menu>

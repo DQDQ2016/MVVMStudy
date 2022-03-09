@@ -11,7 +11,7 @@
 
     <ProgressBar
         android:padding="5dp"
-        android:indeterminateTint="@color/cardview_dark_background"
+        android:indeterminateTint="@color/very_peri"
         android:indeterminateTintMode="src_atop"
         android:layout_width="47dp"
         android:layout_height="47dp"

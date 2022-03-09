@@ -25,7 +25,10 @@ class MainActivity : BaseViewModelActivity<LoginModelView>() {
                 "登录失败".makeToast(this)
             else
                 "登录成功".makeToast(this)
-                    .also { startActivity(HomePageActivity::class.java) }
+                    .also {
+                        startActivity(HomePageActivity::class.java)
+                        finish()
+                    }
         }
     }
 
@@ -37,6 +40,8 @@ class MainActivity : BaseViewModelActivity<LoginModelView>() {
         }
     }
 
+    override fun enableDataBinding(): Boolean = true
+    override fun enableLifecycle(): Boolean = true
     override fun onBindLayout(): Int = R.layout.activity_main
     override fun getViewModelClazz(): KClass<LoginModelView> =  LoginModelView::class
 

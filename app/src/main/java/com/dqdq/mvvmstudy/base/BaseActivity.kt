@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
+import com.alibaba.android.arouter.launcher.ARouter
 import com.dqdq.mvvmstudy.databinding.ActivityMainBinding
 import com.dqdq.mvvmstudy.lifecycle.DefaultLifeCycle
 import com.dqdq.mvvmstudy.model.utils.DialogUtils
@@ -18,6 +19,7 @@ abstract class BaseActivity: RxAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        ARouter.getInstance().inject(this)
         initView()
         initData()
         initListener()
@@ -28,10 +30,15 @@ abstract class BaseActivity: RxAppCompatActivity() {
     }
 
     open fun initView(){
-        binding = DataBindingUtil.setContentView(
-            this, onBindLayout())
-        binding.lifecycleOwner = this
-        lifecycle.addObserver(DefaultLifeCycle())
+        if (enableDataBinding()){
+            binding = DataBindingUtil.setContentView(
+                this, onBindLayout())
+            binding.lifecycleOwner = this
+        }else
+            setContentView(onBindLayout())
+
+        if (enableLifecycle())
+            lifecycle.addObserver(DefaultLifeCycle())
     }
 
     open fun initListener(){
@@ -54,6 +61,10 @@ abstract class BaseActivity: RxAppCompatActivity() {
     open fun showLoadingProgress() = loadingDialog.show()
 
     open fun cancelLoadingProgress() = loadingDialog.cancel()
+
+    abstract fun enableDataBinding(): Boolean
+
+    abstract fun enableLifecycle(): Boolean
 
     abstract fun onBindLayout(): Int
 

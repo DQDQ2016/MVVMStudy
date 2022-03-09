@@ -3,6 +3,8 @@ plugins {
     id 'kotlin-android'
 }
 
+
+
 android {
     compileSdk 31
 
@@ -14,6 +16,12 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ AROUTER_MODULE_NAME : project.getName() ]
+            }
+        }
     }
 
     buildTypes {
@@ -40,6 +48,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
@@ -85,6 +94,10 @@ dependencies {
     implementation 'com.trello.rxlifecycle2:rxlifecycle-android:2.2.1'
     implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.1'
 
+    def aRouterVersion = "1.5.2"
+    implementation "com.alibaba:arouter-api:$aRouterVersion"
+    annotationProcessor "com.alibaba:arouter-compiler:$aRouterVersion"
+
 //    implementation 'com.trello.rxlifecycle4:rxlifecycle:4.0.2'
 
 //// If you want to bind to Android-specific lifecycles
@@ -104,5 +117,7 @@ dependencies {
 //
 //// If you want to use Kotlin syntax with Android Lifecycle
 //    implementation 'com.trello.rxlifecycle4:rxlifecycle-android-lifecycle-kotlin:4.0.2'
+
+// ARouter
 
 }

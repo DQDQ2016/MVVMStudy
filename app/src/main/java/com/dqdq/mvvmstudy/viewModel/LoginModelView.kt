@@ -11,7 +11,7 @@ class LoginModelView(application: Application) : BaseViewModel(application) {
 
     var loginCallBack :((Boolean) -> Unit)? = null
 
-    open fun userLogin(userName:String,pwd:String){
+    fun userLogin(userName:String,pwd:String){
         MainScope().launch {
             delay(1000)
             if(userName.isEmpty() || pwd.isEmpty()){
