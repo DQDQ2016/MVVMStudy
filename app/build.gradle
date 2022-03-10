@@ -1,9 +1,12 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
-
+kapt {
+    generateStubs = true
+}
 
 android {
     compileSdk 31
@@ -19,7 +22,7 @@ android {
 
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [ AROUTER_MODULE_NAME : project.getName() ]
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
         }
     }
@@ -94,9 +97,8 @@ dependencies {
     implementation 'com.trello.rxlifecycle2:rxlifecycle-android:2.2.1'
     implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.1'
 
-    def aRouterVersion = "1.5.2"
-    implementation "com.alibaba:arouter-api:$aRouterVersion"
-    annotationProcessor "com.alibaba:arouter-compiler:$aRouterVersion"
+    implementation 'com.alibaba:arouter-api:1.4.1'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
 
 //    implementation 'com.trello.rxlifecycle4:rxlifecycle:4.0.2'
 

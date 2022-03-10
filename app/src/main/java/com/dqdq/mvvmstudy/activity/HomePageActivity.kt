@@ -13,24 +13,17 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomePageActivity : BaseActivity() {
 
-    @Autowired(name = ARouterUrlConstant.HomePage.DATABASE)
-    @JvmField
-    var mDatabaseProvider: IDataBaseListProvider? = null
-
-    @Autowired(name = ARouterUrlConstant.HomePage.NET)
-    @JvmField
-    var mNetProvider: INetListProvider? = null
-
     var dataFragment: Fragment? = null
     var netListFragment: Fragment? = null
     var currentFragment: Fragment? = null
 
     override fun initView() {
         super.initView()
-        dataFragment = mDatabaseProvider?.dataBaseFragment
-        netListFragment = mNetProvider?.netListFragment
 
-        currentFragment = dataFragment
+        netListFragment = NetListFragment.newInstance()
+        dataFragment = DataBaseFragment.newInstance()
+
+        currentFragment = netListFragment
 
         currentFragment?.let {
             supportFragmentManager.beginTransaction()
@@ -44,10 +37,14 @@ class HomePageActivity : BaseActivity() {
         super.initListener()
         findViewById<BottomNavigationView>(R.id.navigation_bottom).setOnItemSelectedListener{
             when(it.itemId){
-                R.id.navigation_database_list -> switchContent(currentFragment,dataFragment
-                    ,ARouterUrlConstant.HomePage.DATABASE).also { currentFragment = dataFragment }
-                R.id.navigation_net_list -> switchContent(currentFragment,netListFragment
-                ,ARouterUrlConstant.HomePage.NET).also { currentFragment = netListFragment }
+                R.id.navigation_database_list -> {
+                    switchContent(currentFragment,dataFragment,ARouterUrlConstant.HomePage.DATABASE)
+                    currentFragment = dataFragment
+                }
+                R.id.navigation_net_list -> {
+                    switchContent(currentFragment,netListFragment,ARouterUrlConstant.HomePage.NET)
+                    currentFragment = netListFragment
+                }
             }
             return@setOnItemSelectedListener true
         }
@@ -59,12 +56,11 @@ class HomePageActivity : BaseActivity() {
         val trans = supportFragmentManager.beginTransaction()
         if (!to.isAdded)
             trans.hide(from).add(R.id.frame_content,to,tag).commit()
+        else
+            trans.hide(from).show(to).commit()
     }
 
-    override fun enableDataBinding(): Boolean = false
-
     override fun enableLifecycle(): Boolean = false
-
     override fun onBindLayout(): Int = R.layout.activity_home_page
 
 }

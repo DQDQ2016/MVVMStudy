@@ -1,6 +1,6 @@
 package com.dqdq.mvvmstudy.model.retrofit
 
-import android.media.metrics.Event
+import com.dqdq.mvvmstudy.model.bean.Event
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import io.reactivex.Maybe
@@ -16,6 +16,6 @@ interface ApiService{
     }
 
     @GET("users/{username}/events/public")
-    fun publicEvent(@Path("username") username:String): Observable<JsonArray>
+    fun publicEvent(@Path("username") username:String): Observable<List<Event>>
 
 }

@@ -10,7 +10,7 @@ import com.dqdq.mvvmstudy.fragment.DataBaseFragment
 class DataBaseListProvider :IDataBaseListProvider{
 
     override val dataBaseFragment: Fragment
-        get() = DataBaseFragment.newInstance("","")
+        get() = DataBaseFragment.newInstance()
 
     override fun init(context: Context?) {
     }

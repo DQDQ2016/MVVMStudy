@@ -10,7 +10,7 @@ import com.dqdq.mvvmstudy.fragment.NetListFragment
 @Route(path = ARouterUrlConstant.HomePage.NET,name = "网络数据列表")
 class NetListProvider :INetListProvider{
     override val netListFragment: Fragment
-        get() = NetListFragment.newInstance("","")
+        get() = NetListFragment.newInstance()
 
     override fun init(context: Context?) {
     }

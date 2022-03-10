@@ -9,18 +9,9 @@ import kotlin.reflect.KClass
 
 abstract class BaseModelViewBindingFragment<vm:BaseViewModel> : BaseFragment() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
-    }
-
     val vm : vm by lazy { viewModelDelegate(getViewModelClazz()).buildViewModel(
         requireActivity() as BaseActivity,this) }
 
     abstract fun getViewModelClazz(): KClass<vm>
 
-    abstract fun onBindLayout(): Int
 }

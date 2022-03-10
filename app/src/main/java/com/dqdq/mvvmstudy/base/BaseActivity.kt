@@ -5,16 +5,18 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
+import androidx.viewbinding.ViewBinding
 import com.alibaba.android.arouter.launcher.ARouter
 import com.dqdq.mvvmstudy.databinding.ActivityMainBinding
 import com.dqdq.mvvmstudy.lifecycle.DefaultLifeCycle
 import com.dqdq.mvvmstudy.model.utils.DialogUtils
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
+import java.util.zip.Inflater
 
 abstract class BaseActivity: RxAppCompatActivity() {
 
-    lateinit var binding : ActivityMainBinding
-
+    var baseView :View? = null
     val TAG: String by lazy{ this.javaClass.simpleName }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,13 +32,8 @@ abstract class BaseActivity: RxAppCompatActivity() {
     }
 
     open fun initView(){
-        if (enableDataBinding()){
-            binding = DataBindingUtil.setContentView(
-                this, onBindLayout())
-            binding.lifecycleOwner = this
-        }else
-            setContentView(onBindLayout())
-
+        baseView = View.inflate(this,onBindLayout(),null)
+        setContentView(baseView)
         if (enableLifecycle())
             lifecycle.addObserver(DefaultLifeCycle())
     }
@@ -62,10 +59,7 @@ abstract class BaseActivity: RxAppCompatActivity() {
 
     open fun cancelLoadingProgress() = loadingDialog.cancel()
 
-    abstract fun enableDataBinding(): Boolean
-
     abstract fun enableLifecycle(): Boolean
 
     abstract fun onBindLayout(): Int
-
 }
