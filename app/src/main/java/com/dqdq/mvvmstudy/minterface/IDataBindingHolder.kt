@@ -2,7 +2,9 @@ package com.dqdq.mvvmstudy.minterface
 
 import androidx.viewbinding.ViewBinding
 import java.lang.IllegalStateException
-
+/**
+ * Created by DQDQ on 10/3/2022
+ */
 interface IDataBindingHolder<T: ViewBinding> {
 
     fun requireBinding(): T

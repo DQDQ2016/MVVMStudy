@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.dqdq.mvvmstudy.R
-
+/**
+ * Created by DQDQ on 9/3/2022
+ */
 class DataBaseFragment : Fragment() {
 
 

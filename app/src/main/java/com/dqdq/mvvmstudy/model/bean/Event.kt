@@ -1,5 +1,7 @@
 package com.dqdq.mvvmstudy.model.bean
-
+/**
+ * Created by DQDQ on 10/3/2022
+ */
 data class Event(var id:String
                  ,var type:String
                  ,var actor: Actor

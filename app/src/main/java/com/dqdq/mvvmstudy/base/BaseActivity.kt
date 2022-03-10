@@ -13,7 +13,9 @@ import com.dqdq.mvvmstudy.lifecycle.DefaultLifeCycle
 import com.dqdq.mvvmstudy.model.utils.DialogUtils
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
 import java.util.zip.Inflater
-
+/**
+ * Created by DQDQ on 7/3/2022
+ */
 abstract class BaseActivity: RxAppCompatActivity() {
 
     var baseView :View? = null

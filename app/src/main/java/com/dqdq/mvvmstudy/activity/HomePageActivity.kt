@@ -11,6 +11,9 @@ import com.dqdq.mvvmstudy.provider.IDataBaseListProvider
 import com.dqdq.mvvmstudy.provider.INetListProvider
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
+/**
+ * Created by DQDQ on 9/3/2022
+ */
 class HomePageActivity : BaseActivity() {
 
     var dataFragment: Fragment? = null

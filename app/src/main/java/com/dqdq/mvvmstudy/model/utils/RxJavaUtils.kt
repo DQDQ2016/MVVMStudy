@@ -11,7 +11,9 @@ import io.reactivex.schedulers.Schedulers
 import org.reactivestreams.Publisher
 import java.util.concurrent.TimeUnit
 
-
+/**
+ * Created by DQDQ on 7/3/2022
+ */
 object RxJavaUtils {
 
     fun <T> observerToMain():ObservableTransformer<T,T>{

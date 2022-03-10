@@ -5,7 +5,9 @@ import android.app.Dialog
 import android.content.Context
 import android.widget.ImageView
 import com.dqdq.mvvmstudy.R
-
+/**
+ * Created by DQDQ on 7/3/2022
+ */
 object DialogUtils {
 
     @SuppressLint("ResourceType")

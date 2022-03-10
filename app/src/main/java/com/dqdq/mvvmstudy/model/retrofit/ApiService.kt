@@ -8,7 +8,9 @@ import io.reactivex.Observable
 import io.reactivex.Observer
 import retrofit2.http.GET
 import retrofit2.http.Path
-
+/**
+ * Created by DQDQ on 7/3/2022
+ */
 interface ApiService{
 
     companion object{

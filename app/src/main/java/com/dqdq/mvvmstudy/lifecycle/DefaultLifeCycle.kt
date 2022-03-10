@@ -2,7 +2,9 @@ package com.dqdq.mvvmstudy.lifecycle
 
 import android.util.Log
 import androidx.lifecycle.*
-
+/**
+ * Created by DQDQ on 7/3/2022
+ */
 class DefaultLifeCycle :DefaultLifecycleObserver {
 
     companion object{

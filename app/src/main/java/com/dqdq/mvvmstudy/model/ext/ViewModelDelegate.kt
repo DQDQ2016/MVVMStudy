@@ -5,7 +5,9 @@ import com.dqdq.mvvmstudy.base.BaseActivity
 import com.dqdq.mvvmstudy.base.BaseFragment
 import com.dqdq.mvvmstudy.base.BaseViewModel
 import kotlin.reflect.KClass
-
+/**
+ * Created by DQDQ on 7/3/2022
+ */
 class ViewModelDelegate<out T: BaseViewModel>(private val clazz: KClass<T>
                                               , private val fromActivity:Boolean = true) {
 

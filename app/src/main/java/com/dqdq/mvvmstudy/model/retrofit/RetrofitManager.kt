@@ -5,7 +5,9 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
-
+/**
+ * Created by DQDQ on 6/3/2022
+ */
 class RetrofitManager private constructor(){
 
     private val apiService:ApiService

@@ -10,7 +10,9 @@ import com.dqdq.mvvmstudy.model.utils.RxJavaUtils
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-
+/**
+ * Created by DQDQ on 8/3/2022
+ */
 class LoginModelView(application: Application) : BaseViewModel(application) {
 
     var loginCallBack :((Boolean) -> Unit)? = null

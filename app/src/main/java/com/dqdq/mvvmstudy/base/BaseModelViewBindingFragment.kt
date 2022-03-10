@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.dqdq.mvvmstudy.model.ext.viewModelDelegate
 import kotlin.reflect.KClass
-
+/**
+ * Created by DQDQ on 10/3/2022
+ */
 abstract class BaseModelViewBindingFragment<vm:BaseViewModel> : BaseFragment() {
 
     val vm : vm by lazy { viewModelDelegate(getViewModelClazz()).buildViewModel(

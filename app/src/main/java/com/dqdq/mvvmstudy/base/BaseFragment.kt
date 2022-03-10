@@ -11,7 +11,9 @@ import com.dqdq.mvvmstudy.R
 import com.dqdq.mvvmstudy.databinding.ActivityMainBinding
 import com.dqdq.mvvmstudy.model.utils.DialogUtils
 import com.trello.rxlifecycle2.components.RxFragment
-
+/**
+ * Created by DQDQ on 7/3/2022
+ */
 abstract class BaseFragment: com.trello.rxlifecycle2.components.support.RxFragment() {
 
 

@@ -9,7 +9,9 @@ import com.dqdq.mvvmstudy.databinding.ActivityMainBinding
 import com.dqdq.mvvmstudy.viewModel.LoginModelView
 import com.dqdq.mvvmstudy.model.utils.makeToast
 import kotlin.reflect.KClass
-
+/**
+ * Created by DQDQ on 6/3/2022
+ */
 class MainActivity : BaseViewModelActivity<LoginModelView>()
     , IActivityDataBinding<ActivityMainBinding> by activityDataBindingHolder(){
 
