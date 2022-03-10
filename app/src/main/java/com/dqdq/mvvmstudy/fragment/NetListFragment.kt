@@ -24,9 +24,7 @@ class NetListFragment : Fragment() {
     }
 
     companion object {
-
         @JvmStatic
         fun newInstance() = NetListFragment()
-
     }
 }

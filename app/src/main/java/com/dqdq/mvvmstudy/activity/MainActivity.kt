@@ -1,31 +1,23 @@
 package com.dqdq.mvvmstudy.activity
 
 import android.view.View
+import com.dqdq.mvvmstudy.BR
 import com.dqdq.mvvmstudy.R
-import com.dqdq.mvvmstudy.minterface.IActivityDataBinding
+import com.dqdq.mvvmstudy.minterface.IDataBinding
 import com.dqdq.mvvmstudy.base.BaseViewModelActivity
-import com.dqdq.mvvmstudy.minterface.holder.activityDataBindingHolder
+import com.dqdq.mvvmstudy.base.BaseViewModelDataBindingActivity
 import com.dqdq.mvvmstudy.databinding.ActivityMainBinding
+import com.dqdq.mvvmstudy.minterface.holder.dataBindingHolder
 import com.dqdq.mvvmstudy.viewModel.LoginModelView
 import com.dqdq.mvvmstudy.model.utils.makeToast
 import kotlin.reflect.KClass
 /**
  * Created by DQDQ on 6/3/2022
  */
-class MainActivity : BaseViewModelActivity<LoginModelView>()
-    , IActivityDataBinding<ActivityMainBinding> by activityDataBindingHolder(){
-
-    override fun initView() {
-        super.initView()
-        baseView?.let {
-            inflate { ActivityMainBinding.bind(it) }
-        }
-    }
+class MainActivity : BaseViewModelDataBindingActivity<ActivityMainBinding, LoginModelView>() {
 
     override fun initListener() {
         super.initListener()
-        var result = MutableList(0) { 0 }
-        result.add(1)
         vm.loginCallBack = {
             cancelLoadingProgress()
             if (!it)
@@ -47,8 +39,11 @@ class MainActivity : BaseViewModelActivity<LoginModelView>()
         }
     }
 
-
     override fun enableLifecycle(): Boolean = true
     override fun onBindLayout(): Int = R.layout.activity_main
     override fun getViewModelClazz(): KClass<LoginModelView> =  LoginModelView::class
+    override fun onDataBinding(): ActivityMainBinding = baseView?.let { ActivityMainBinding.bind(it)}!!
+    override fun onBindVariableID(): MutableList<Pair<Int, Any>> {
+        return arrayListOf(BR.vm to vm)
+    }
 }

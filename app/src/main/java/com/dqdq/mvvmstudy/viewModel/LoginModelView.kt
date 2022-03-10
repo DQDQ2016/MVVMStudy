@@ -16,18 +16,26 @@ import kotlinx.coroutines.launch
 class LoginModelView(application: Application) : BaseViewModel(application) {
 
     var loginCallBack :((Boolean) -> Unit)? = null
+    private var count:MutableLiveData<Int>? = null
 
     @SuppressLint("CheckResult")
     fun userLogin(userName:String, pwd:String){
 
         MainScope().launch {
-            delay(1000)
+            delay(100)
             if(userName.isEmpty() || pwd.isEmpty()){
                 loginCallBack?.let { it(false) }
+                currentCount().value = currentCount().value?.plus(1)
+                Log.i(TAG, currentCount().value.toString())
             }else{
                 loginCallBack?.let { it(true) }
             }
         }
+    }
 
+    fun currentCount():MutableLiveData<Int>{
+        if (count == null)
+            count = MutableLiveData()
+        return count as MutableLiveData<Int>
     }
 }

@@ -51,7 +51,7 @@
             android:layout_marginTop="5dp"
             android:id="@+id/btnLogin"
             android:onClick="onClick"
-            android:text="@string/login"
+            android:text="@{String.valueOf(vm.currentCount().intValue())}"
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>

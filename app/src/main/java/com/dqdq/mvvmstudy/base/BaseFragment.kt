@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.launcher.ARouter
 import com.dqdq.mvvmstudy.R
 import com.dqdq.mvvmstudy.databinding.ActivityMainBinding
+import com.dqdq.mvvmstudy.fragment.NetListFragment
 import com.dqdq.mvvmstudy.model.utils.DialogUtils
 import com.trello.rxlifecycle2.components.RxFragment
 /**
@@ -16,13 +17,15 @@ import com.trello.rxlifecycle2.components.RxFragment
  */
 abstract class BaseFragment: com.trello.rxlifecycle2.components.support.RxFragment() {
 
+    var mView: View? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(onBindLayout(), container, false)
+        mView = inflater.inflate(onBindLayout(), container, false)
+        return mView
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,6 +56,5 @@ abstract class BaseFragment: com.trello.rxlifecycle2.components.support.RxFragme
     abstract fun enableDataBinding(): Boolean
 
     abstract fun onBindLayout(): Int
-
 
 }
