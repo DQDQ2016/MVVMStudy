@@ -1,12 +1,13 @@
 package com.dqdq.mvvmstudy.minterface.holder
 
+import androidx.databinding.ViewDataBinding
 import androidx.viewbinding.ViewBinding
 import com.dqdq.mvvmstudy.minterface.IDataBinding
 import com.dqdq.mvvmstudy.minterface.IDataBindingHolder
 /**
  * Created by DQDQ on 10/3/2022
  */
-class DataBindingHolder<T : ViewBinding>:IDataBinding<T> {
+class DataBindingHolder<T : ViewDataBinding>:IDataBinding<T> {
 
     private val dataBindingHolder = IDataBindingHolder.BindingHolder<T>()
 
@@ -17,5 +18,5 @@ class DataBindingHolder<T : ViewBinding>:IDataBinding<T> {
     }
 }
 
-fun <T:ViewBinding> dataBindingHolder(): IDataBinding<T>
+fun <T:ViewDataBinding> dataBindingHolder(): IDataBinding<T>
     = DataBindingHolder<T>()
