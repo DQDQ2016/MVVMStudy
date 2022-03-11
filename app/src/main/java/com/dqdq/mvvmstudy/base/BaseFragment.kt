@@ -17,6 +17,7 @@ import com.trello.rxlifecycle2.components.RxFragment
  */
 abstract class BaseFragment: com.trello.rxlifecycle2.components.support.RxFragment() {
 
+    val TAG: String by lazy{ this.javaClass.simpleName }
     var mView: View? = null
 
     override fun onCreateView(

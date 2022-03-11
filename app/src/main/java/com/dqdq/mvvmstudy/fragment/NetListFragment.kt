@@ -1,14 +1,17 @@
 package com.dqdq.mvvmstudy.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.ui.window.Dialog
 import com.dqdq.mvvmstudy.BR
 import com.dqdq.mvvmstudy.R
 import com.dqdq.mvvmstudy.base.BaseModelViewBindingFragment
 import com.dqdq.mvvmstudy.databinding.FragmentNetListBinding
+import com.dqdq.mvvmstudy.model.ext.observe
 import com.dqdq.mvvmstudy.viewModel.NetListViewModel
 import kotlin.reflect.KClass
 

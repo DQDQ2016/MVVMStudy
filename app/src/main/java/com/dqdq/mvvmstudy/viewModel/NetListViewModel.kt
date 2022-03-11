@@ -1,6 +1,7 @@
 package com.dqdq.mvvmstudy.viewModel
 
 import android.app.Application
+import androidx.lifecycle.MutableLiveData
 import com.dqdq.mvvmstudy.base.BaseViewModel
 
 /**
