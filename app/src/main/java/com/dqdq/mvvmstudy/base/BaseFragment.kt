@@ -25,25 +25,22 @@ abstract class BaseFragment: com.trello.rxlifecycle2.components.support.RxFragme
         savedInstanceState: Bundle?
     ): View? {
         mView = inflater.inflate(onBindLayout(), container, false)
-        return mView
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         ARouter.getInstance().inject(this)
         initView()
         initData()
         initListener()
+        return mView
     }
 
-    private fun initView(){
+    open fun initView(){
 
     }
 
-    private fun initData(){
+    open fun initData(){
 
     }
-    private fun initListener(){
+
+    open fun initListener(){
 
     }
 
@@ -52,8 +49,6 @@ abstract class BaseFragment: com.trello.rxlifecycle2.components.support.RxFragme
     open fun showLoadingProgress() = loadingDialog.show()
 
     open fun cancelLoadingProgress() = loadingDialog.cancel()
-
-    abstract fun enableDataBinding(): Boolean
 
     abstract fun onBindLayout(): Int
 

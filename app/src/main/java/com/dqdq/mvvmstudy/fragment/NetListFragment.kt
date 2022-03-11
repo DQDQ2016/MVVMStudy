@@ -5,26 +5,34 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.dqdq.mvvmstudy.BR
 import com.dqdq.mvvmstudy.R
+import com.dqdq.mvvmstudy.base.BaseModelViewBindingFragment
+import com.dqdq.mvvmstudy.databinding.FragmentNetListBinding
+import com.dqdq.mvvmstudy.viewModel.NetListViewModel
+import kotlin.reflect.KClass
+
 /**
  * Created by DQDQ on 9/3/2022
  */
-class NetListFragment : Fragment() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_net_list, container, false)
-    }
+class NetListFragment : BaseModelViewBindingFragment<FragmentNetListBinding,NetListViewModel>() {
 
     companion object {
         @JvmStatic
         fun newInstance() = NetListFragment()
     }
+
+    override fun onBindLayout(): Int = R.layout.fragment_net_list
+
+    override fun initObservable() {
+
+    }
+
+    override fun onDataBinding(): FragmentNetListBinding = mView?.let { FragmentNetListBinding.bind(it) }!!
+
+    override fun onBindVariableID(): MutableList<Pair<Int, Any>> {
+        return arrayListOf(BR.vm to vm)
+    }
+
+    override fun getViewModelClazz(): KClass<NetListViewModel> = NetListViewModel::class
 }
