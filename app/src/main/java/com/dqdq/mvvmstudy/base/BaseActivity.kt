@@ -27,6 +27,7 @@ abstract class BaseActivity: RxAppCompatActivity() {
         initView()
         initData()
         initListener()
+        initLifecycle()
     }
 
     open fun initData(){
@@ -36,8 +37,6 @@ abstract class BaseActivity: RxAppCompatActivity() {
     open fun initView(){
         baseView = View.inflate(this,onBindLayout(),null)
         setContentView(baseView)
-        if (enableLifecycle())
-            lifecycle.addObserver(DefaultLifeCycle())
     }
 
     open fun initListener(){
@@ -45,6 +44,10 @@ abstract class BaseActivity: RxAppCompatActivity() {
     }
 
     open fun onClick(v: View){
+
+    }
+
+    open fun initLifecycle(){
 
     }
 
@@ -60,8 +63,6 @@ abstract class BaseActivity: RxAppCompatActivity() {
     open fun showLoadingProgress() = loadingDialog.show()
 
     open fun cancelLoadingProgress() = loadingDialog.cancel()
-
-    abstract fun enableLifecycle(): Boolean
 
     abstract fun onBindLayout(): Int
 }

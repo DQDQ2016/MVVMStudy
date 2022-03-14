@@ -41,7 +41,6 @@ class MainActivity : BaseViewModelDataBindingActivity<ActivityMainBinding, Login
         }
     }
 
-    override fun enableLifecycle(): Boolean = true
     override fun onBindLayout(): Int = R.layout.activity_main
     override fun getViewModelClazz(): KClass<LoginModelView> =  LoginModelView::class
     override fun onDataBinding(): ActivityMainBinding = baseView?.let {

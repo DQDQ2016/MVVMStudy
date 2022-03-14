@@ -18,6 +18,6 @@ interface ApiService{
     }
 
     @GET("users/{username}/events/public")
-    fun publicEvent(@Path("username") username:String): Observable<List<Event>>
+    fun publicEvent(@Path("username") username:String): Observable<MutableList<Event>>
 
 }

@@ -13,16 +13,10 @@
         android:layout_height="match_parent"
         tools:context=".fragment.NetListFragment">
 
-        <TextView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:onClick="onFragmentClick"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="one"
-            android:textSize="50dp" />
-
-
+            android:layout_height="match_parent"/>
     </FrameLayout>
 
 </layout>
