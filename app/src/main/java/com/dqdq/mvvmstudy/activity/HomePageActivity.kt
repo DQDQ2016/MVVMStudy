@@ -22,17 +22,19 @@ class HomePageActivity : BaseActivity() {
 
     override fun initView() {
         super.initView()
+        if (currentFragment == null){
+            if (netListFragment == null)
+                netListFragment = NetListFragment.newInstance()
+            if (dataFragment == null)
+                dataFragment = DataBaseFragment.newInstance()
+            currentFragment = netListFragment
 
-        netListFragment = NetListFragment.newInstance()
-        dataFragment = DataBaseFragment.newInstance()
-
-        currentFragment = netListFragment
-
-        currentFragment?.let {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.frame_content,currentFragment as Fragment
-                    ,ARouterUrlConstant.HomePage.DATABASE)
-                .commit()
+            currentFragment?.let {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.frame_content,currentFragment as Fragment
+                        ,ARouterUrlConstant.HomePage.DATABASE)
+                    .commit()
+            }
         }
     }
 
@@ -63,7 +65,6 @@ class HomePageActivity : BaseActivity() {
             trans.hide(from).show(to).commit()
     }
 
-    override fun enableLifecycle(): Boolean = false
     override fun onBindLayout(): Int = R.layout.activity_home_page
 
 }

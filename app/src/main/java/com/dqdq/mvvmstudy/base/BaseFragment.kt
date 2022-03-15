@@ -2,6 +2,7 @@ package com.dqdq.mvvmstudy.base
 
 import android.app.Dialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,10 +26,13 @@ abstract class BaseFragment: com.trello.rxlifecycle2.components.support.RxFragme
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mView = inflater.inflate(onBindLayout(), container, false)
+        if (mView==null)
+            mView = inflater.inflate(onBindLayout(), container, false)
         ARouter.getInstance().inject(this)
+        Log.i("DDDQLIFECYCLE  "+TAG,"onCreateView:${savedInstanceState == null }")
         initView()
-        initData()
+        if (savedInstanceState==null)
+            initData()
         initListener()
         return mView
     }

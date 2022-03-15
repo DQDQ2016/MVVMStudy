@@ -3,6 +3,7 @@ package com.dqdq.mvvmstudy.base
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -24,8 +25,10 @@ abstract class BaseActivity: RxAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ARouter.getInstance().inject(this)
+        Log.i("DDDQLIFECYCLE "+TAG,"onCreate ${savedInstanceState == null }")
         initView()
-        initData()
+        if (savedInstanceState==null)
+            initData()
         initListener()
         initLifecycle()
     }
@@ -35,7 +38,8 @@ abstract class BaseActivity: RxAppCompatActivity() {
     }
 
     open fun initView(){
-        baseView = View.inflate(this,onBindLayout(),null)
+        if (baseView == null)
+            baseView = View.inflate(this,onBindLayout(),null)
         setContentView(baseView)
     }
 

@@ -98,13 +98,17 @@ dependencies {
     implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.1'
 
     implementation 'com.alibaba:arouter-api:1.4.1'
-    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
+    kapt 'com.alibaba:arouter-compiler:1.2.2'
 
     api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
 
     def glideVersion = '4.11.0'
     api "com.github.bumptech.glide:glide:$glideVersion"
     api "com.github.bumptech.glide:compiler:$glideVersion"
+
+
+    implementation 'com.google.dagger:dagger:2.38.1'
+    kapt 'com.google.dagger:dagger-compiler:2.38.1'
 
 //    implementation 'com.trello.rxlifecycle4:rxlifecycle:4.0.2'
 

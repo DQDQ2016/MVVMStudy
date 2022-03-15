@@ -37,6 +37,10 @@ class NetListFragment : BaseModelViewBindingFragment<FragmentNetListBinding,NetL
         mAdapter = NetListAdapter()
         requireBinding().rcvList.layoutManager = LinearLayoutManager(requireContext())
         requireBinding().rcvList.adapter = mAdapter
+    }
+
+    override fun initData() {
+        super.initData()
         vm.getListData()
     }
 

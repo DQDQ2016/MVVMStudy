@@ -12,6 +12,8 @@ import com.dqdq.mvvmstudy.minterface.holder.dataBindingHolder
 import com.dqdq.mvvmstudy.model.ext.observe
 import com.dqdq.mvvmstudy.viewModel.LoginModelView
 import com.dqdq.mvvmstudy.model.utils.makeToast
+import com.dqdq.mvvmstudy.viewModel.TestModelView
+import javax.inject.Inject
 import kotlin.reflect.KClass
 /**
  * Created by DQDQ on 6/3/2022
